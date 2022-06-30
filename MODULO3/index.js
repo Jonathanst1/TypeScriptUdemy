@@ -80,3 +80,65 @@ function advancedGreeting(firstName, lastname) {
 }
 console.log(advancedGreeting("Jonathan", "Frazão"));
 console.log(advancedGreeting("Jonathan"));
+//union types
+// O union type é uma alternativa melhor do que any
+//podemos determinar dois tipos para um dado
+//a sintaxe: number | string
+function showBalance(balance) {
+    console.log(`O saldo da conta é R$${balance}`);
+}
+showBalance(500);
+showBalance("Jonathan");
+// AVANÇANDO COM UNION TYPES
+//Podemos utilizar condicionais para validação do tipo de union types
+//com isso é possivel trilhar rumos diferentes,baseado no tipo de dado
+//para checar o tipo utilizamos typeof
+function showUserRole(role) {
+    if (typeof role === "boolean") {
+        return "Usuario não aprovado!";
+    }
+    return ` A função do usuário é ${role}`;
+}
+console.log(showUserRole(false));
+console.log(showUserRole("Admin"));
+function showID(id) {
+    console.log(`O ID  é : ${id}`);
+}
+showID(1);
+showID("200");
+showID(123);
+function showCoords(obj) {
+    console.log(`x: ${obj.x} y ${obj.y} z: ${obj.z}`);
+}
+const coordOBJ = {
+    x: 10,
+    y: 6,
+    z: 6
+};
+showCoords(coordOBJ);
+// literal types
+//literal types é um recurso que permite colocar valores como tipos
+//isso restringe o uso a não só tipos, como também os próprios valores
+//este recurso é muito utilizado com union types
+function showDirection(direction) {
+    console.log(`A direção é: ${direction}`);
+}
+showDirection("left");
+//non - null assertion operator
+//as vezes o typescript pode evidenciar um erro, baseando em um valor que no momento
+//do codigo ainda não está disponivel
+// porém se sabemos que este valor será preenchido, podemos evitar o erro
+//utilizando o caractera "!""
+const p = document.getElementById("some-p");
+console.log(p.innerText);
+let n;
+n = 1000n;
+console.log(n);
+//symbol
+//de forma resumida , o symbol cria uma referencia unica para um valor
+//ou seja mesmom que ele possua o mesmo valor de outra variável teremos valores
+//sendo considerados ddiferentes
+let symbolA = Symbol("A");
+let symbolB = Symbol("a");
+console.log(symbolA == symbolB);
+console.log(symbolA === symbolB);
