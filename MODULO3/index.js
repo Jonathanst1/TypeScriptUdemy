@@ -35,3 +35,48 @@ exemplo: métodos não existentes
 setTimeout(function () {
     const sallary = 1000;
 }, 2000);
+//tipos de objetos
+/*
+
+* Podemos determinar tipos para objetos também
+* A sintaxe é {prop:tipo, prop2:tipo2}
+* Ou seja, estamos determinando quais tipos as propriedades de um objeto possuem
+*/
+function cordinates(coord) {
+    console.log("X corddinattes: " + coord.x);
+    console.log("y coordinates:" + coord.y);
+}
+const objCoord = { x: 200, y: 85.2 };
+cordinates(objCoord);
+/*
+Propriedades opcionais
+
+Nem sempre os objetos possuem todas as propriedades que poderiam possuir
+por isso temos as propriedades opcionais
+para ter esse resultado dedvemos colocar uma interrogação:{nome:string,sobrenome?:string}
+
+
+// props opcionais
+
+*/
+function showNumbers(a, b, c) {
+    console.log("A" + a);
+    console.log("B" + b);
+    if (c) {
+        console.log("C" + c);
+    }
+}
+showNumbers(1, 2, 3);
+showNumbers(4, 5);
+//Maneira correta de validar props opcionais
+//quando a pripriedade é opcional, precisamos criar uma validação
+//isso acontece por que o typescript não nos ajuda mais, kjá que ele deixa de controlar o valor que recebemos.
+//para isso utilizamoms uma condicional if, e conseguimos resolver a situação
+function advancedGreeting(firstName, lastname) {
+    if (lastname !== undefined) {
+        return `Olá ,${firstName} ${lastname}, tudo bem?`;
+    }
+    return `Olá, ${firstName},tudo bem ?`;
+}
+console.log(advancedGreeting("Jonathan", "Frazão"));
+console.log(advancedGreeting("Jonathan"));
